@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiitos Assistant</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+
+  <body>
+    <h1>Kiitos Assistant</h1>
+
+    <form class="wordSearch">
+      <ul>
+        <li>
+          <label for="table-word">Table Cards:</label>
+          <input type="text" id="tableWord" name="add" value="je" />
+        </li>
+        <li>
+          <label for="users-hand">Hand Cards:</label>
+          <input type="text" id="userHand" name="add" value="abcdefgs" />
+        </li>
+
+        <li>
+          <label for="minLength">5 Letters</label>
+          <input type="checkbox" id="minLength" name="modifiers" checked />
+        </li>
+        <li>
+          <label for="superKiitos">Super Kiitos</label>
+          <input type="checkbox" id="superKiitos" name="modifiers" />
+        </li>
+        <li class="button">
+          <button type="submit">Search For Possible Words</button>
+        </li>
+      </ul>
+    </form>
+
+    <div class="results">
+      <h2>Results</h2>
+      <ul id="resultList"></ul>
+    </div>
+    <script src="assets/bundle.js"></script>
+  </body>
+</html>
