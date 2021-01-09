@@ -1,4 +1,4 @@
-import { startsWithTableWord } from './utils';
+import { containsTableWord, getPrevLetter } from './utils';
 
 export const getWordOptions = (
   table,
@@ -10,19 +10,16 @@ export const getWordOptions = (
   let potentialWords = [];
   dictionary.forEach((word) => {
     let nextLetter = word.charAt(table.length);
-    let prevLetter = word.indexOf(table) - 1;
+    let prevLetter = getPrevLetter(table, word);
     if (
       word.length >= minWordLength &&
-      startsWithTableWord(table, word) &&
-      hand.includes(nextLetter) &&
-      word.length > table.length + 1
+      word.length > table.length + 1 &&
+      containsTableWord(table, word) &&
+      hand.includes(nextLetter)
     ) {
       potentialWords.push(word);
     }
   });
-  // arrange words in ascending length
-  potentialWords.sort((a, b) => {
-    return a.length - b.length;
-  });
+
   return potentialWords;
 };

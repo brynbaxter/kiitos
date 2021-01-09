@@ -11,6 +11,11 @@ xmlhttp.onreadystatechange = function () {
     let dictionaryFile = this.responseText;
     const wordArr = dictionaryFile.replace(/\r/g, '').split('\n');
     fourLetterPlusArr = wordArr.filter((word) => word.length >= 4);
+
+    // arrange words in ascending length
+    fourLetterPlusArr.sort((a, b) => {
+      return a.length - b.length;
+    });
   }
 };
 xmlhttp.open('GET', url, true);
