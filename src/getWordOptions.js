@@ -1,4 +1,4 @@
-import { containsTableWord, getPrevLetter } from './utils';
+import { getPrevLetter, getNextLetter } from './utils';
 
 export const getWordOptions = (
   table,
@@ -9,15 +9,26 @@ export const getWordOptions = (
 ) => {
   let potentialWords = [];
   dictionary.forEach((word) => {
-    let nextLetter = word.charAt(table.length);
-    let prevLetter = getPrevLetter(table, word);
-    if (
-      word.length >= minWordLength &&
-      word.length > table.length + 1 &&
-      containsTableWord(table, word) &&
-      hand.includes(nextLetter)
-    ) {
-      potentialWords.push(word);
+    let nextLetter = getNextLetter(table, word); // letter that could be placed at front of table to continue forming word
+    let prevLetter = getPrevLetter(table, word); // letter that could be placed at end of table to continue forming words
+    if (!superKiitos) {
+      if (
+        word.length >= minWordLength &&
+        word.length > table.length + 1 &&
+        word.indexOf(table) > -1 &&
+        hand.includes(nextLetter)
+      ) {
+        potentialWords.push(word);
+      }
+    } else if (superKiitos) {
+      if (
+        word.length >= minWordLength &&
+        word.length > table.length + 1 &&
+        word.indexOf(table) > -1 &&
+        (hand.includes(nextLetter) || hand.includes(prevLetter))
+      ) {
+        potentialWords.push(word);
+      }
     }
   });
 

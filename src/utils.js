@@ -1,22 +1,19 @@
-const startsWithTableWord = (table, word) => {
-  return word.indexOf(table) == 0;
-};
-
-const containsTableWord = (table, word) => {
-  return word.indexOf(table) > -1;
+const getNextLetter = (table, word) => {
+  let index = word.indexOf(table) + table.length;
+  if (index < word.length) {
+    return word.slice(index, index + 1);
+  }
 };
 
 const getPrevLetter = (table, word) => {
   let index = word.indexOf(table);
-  if (index < 1) {
-    return '';
-  } else {
+  if (index > 1) {
     return word.slice(index - 1, index);
   }
 };
 
 const results = document.querySelector('#resultList');
-const addSomethingToDoc = (potentialWords) => {
+const addPossibleWordsToDoc = (potentialWords) => {
   results.innerHTML = '';
   potentialWords.forEach((word) => {
     let html = `<li class="word-option">
@@ -27,4 +24,4 @@ const addSomethingToDoc = (potentialWords) => {
   });
 };
 
-export { containsTableWord, getPrevLetter, addSomethingToDoc };
+export { getPrevLetter, getNextLetter, addPossibleWordsToDoc };

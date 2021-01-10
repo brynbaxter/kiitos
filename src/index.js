@@ -1,5 +1,5 @@
 import { getWordOptions } from './getWordOptions';
-import { addSomethingToDoc } from './utils';
+import { addPossibleWordsToDoc } from './utils';
 
 const xmlhttp = new XMLHttpRequest();
 const url =
@@ -25,10 +25,10 @@ const form = document.querySelector('.wordSearch');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  let table = form.tableWord.value;
-  let hand = form.userHand.value.split('');
-  let minWordLength = form.minLength.checked ? 5 : 4;
-  let superKiitos = form.superKiitos.checked;
+  let table = form.tableWord.value; // str
+  let hand = form.userHand.value.split(''); // char array
+  let minWordLength = form.minLength.checked ? 5 : 4; // 4 or 5
+  let superKiitos = form.superKiitos.checked; // bool
   let potentialWords = getWordOptions(
     table,
     hand,
@@ -36,5 +36,5 @@ form.addEventListener('submit', (e) => {
     superKiitos,
     fourLetterPlusArr
   );
-  addSomethingToDoc(potentialWords);
+  addPossibleWordsToDoc(potentialWords);
 });

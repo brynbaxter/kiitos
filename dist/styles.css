@@ -1,5 +1,7 @@
 body {
   font: arial;
+  margin: 50 auto 2em;
+  width: 500px;
 }
 
 form,
