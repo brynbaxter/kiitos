@@ -1,11 +1,12 @@
-import { getPrevLetter, getNextLetter } from './utils';
+import { getPrevLetter, getNextLetter, addPossibleWordToDoc } from './utils';
 
 export const getWordOptions = (
   table,
   hand,
   minWordLength,
   superKiitos,
-  dictionary
+  dictionary,
+  resultsObj
 ) => {
   let potentialWords = [];
   dictionary.forEach((word) => {
@@ -18,6 +19,7 @@ export const getWordOptions = (
         word.indexOf(table) > -1 &&
         hand.includes(nextLetter)
       ) {
+        addPossibleWordToDoc(resultsObj, word);
         potentialWords.push(word);
       }
     } else if (superKiitos) {
@@ -27,6 +29,7 @@ export const getWordOptions = (
         word.indexOf(table) > -1 &&
         (hand.includes(nextLetter) || hand.includes(prevLetter))
       ) {
+        addPossibleWordToDoc(resultsObj, word);
         potentialWords.push(word);
       }
     }

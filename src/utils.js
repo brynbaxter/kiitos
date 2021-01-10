@@ -12,16 +12,12 @@ const getPrevLetter = (table, word) => {
   }
 };
 
-const results = document.querySelector('#resultList');
-const addPossibleWordsToDoc = (potentialWords) => {
-  results.innerHTML = '';
-  potentialWords.forEach((word) => {
-    let html = `<li class="word-option">
+const addPossibleWordToDoc = (resultsObj, word) => {
+  let html = `<li class="word-option">
         <span>${word}</span>
       </li>
     `;
-    results.innerHTML += html;
-  });
+  resultsObj.innerHTML += html;
 };
 
-export { getPrevLetter, getNextLetter, addPossibleWordsToDoc };
+export { getPrevLetter, getNextLetter, addPossibleWordToDoc };

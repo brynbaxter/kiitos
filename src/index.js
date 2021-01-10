@@ -22,19 +22,21 @@ xmlhttp.open('GET', url, true);
 xmlhttp.send();
 
 const form = document.querySelector('.wordSearch');
+const resultsObj = document.querySelector('#resultList');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  resultsObj.innerHTML = '';
   let table = form.tableWord.value; // str
   let hand = form.userHand.value.split(''); // char array
   let minWordLength = form.minLength.checked ? 5 : 4; // 4 or 5
   let superKiitos = form.superKiitos.checked; // bool
-  let potentialWords = getWordOptions(
+  getWordOptions(
     table,
     hand,
     minWordLength,
     superKiitos,
-    fourLetterPlusArr
+    fourLetterPlusArr,
+    resultsObj
   );
-  addPossibleWordsToDoc(potentialWords);
 });
