@@ -4,17 +4,6 @@ body {
   width: 500px;
 }
 
-form,
-.results {
-  /* Center the form on the page */
-  margin: 0 auto 2em;
-  width: 500px;
-  /* Form outline */
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 1em;
-}
-
 ul {
   list-style: none;
   padding: 0;
@@ -39,7 +28,7 @@ textarea {
   font: 1em sans-serif;
 
   /* Uniform text field size */
-  width: 300px;
+  width: 200px;
   box-sizing: border-box;
 
   /* Match form field borders */
@@ -60,13 +49,31 @@ textarea {
   height: 5em;
 }
 
-.button {
-  /* Align buttons with the text fields */
-  padding-left: 90px; /* same size as the label elements */
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-button {
-  /* This extra margin represent roughly the same space as the space
-     between the labels and their text fields */
-  margin-left: 0.5em;
+.main-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+@media (max-width: 800px) {
+  .main-container {
+    flex-direction: column;
+  }
+}
+
+.wordSearch,
+.results {
+  margin: 0 2em 2em;
+  width: 500px;
+  min-width: 400px;
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: #ddd;
 }
